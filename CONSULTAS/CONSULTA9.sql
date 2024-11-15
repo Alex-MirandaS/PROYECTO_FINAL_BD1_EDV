@@ -1,5 +1,5 @@
 CREATE VIEW catedratico_sistemas AS
-SELECT cat.codigo, cat.nombre, cat.apellido,ci.id as ciclo_id, ci.ciclo, car.id as carrera_id FROM seccion AS s
+SELECT cat.codigo, cat.nombre, cat.apellido,ci.id as ciclo_id, ci.ciclo, car.id as carrera_id, s.anio FROM seccion AS s
 INNER JOIN curso AS c
 ON s.id_curso = c.id
 INNER JOIN curso_pensum AS cp
@@ -14,9 +14,8 @@ INNER JOIN catedratico AS cat
 ON s.id_catedratico = cat.codigo
 ;
 
-
 CREATE VIEW estudiante_curso_aprobado AS
-SELECT e.carne, e.nombre AS estudiante, c.id AS codigo_curso, c.nombre AS curso, cat.codigo, ci.id as ciclo_id, ac.aprobado
+SELECT e.carne, e.nombre AS estudiante, c.id AS codigo_curso, c.nombre AS curso, cat.codigo, ci.id as ciclo_id, ac.aprobado, s.anio
 FROM estudiante AS e
 INNER JOIN asignacion AS a
 ON a.id_estudiante = e.carne
@@ -33,8 +32,6 @@ ON an.id_asignacion = a.id
 INNER JOIN aprobacion_curso AS ac 
 ON ac.acta_nota_codigo = an.id 
 ;
-
-
 
 SELECT eca.carne, eca.estudiante, eca.codigo_curso, eca.curso, eca.codigo as id_catedratico, cs.nombre, cs.apellido, cs.ciclo
 FROM estudiante_curso_aprobado AS eca 

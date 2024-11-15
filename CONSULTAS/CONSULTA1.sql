@@ -24,7 +24,7 @@ ON p.id_carrera = ca.id
  /*----------*/
  
  
- select * from promedio_estudiante;
+
 
 SELECT
     c.nombre AS carrera_nombre,

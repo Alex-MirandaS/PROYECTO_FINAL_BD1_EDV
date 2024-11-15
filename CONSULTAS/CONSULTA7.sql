@@ -10,7 +10,6 @@ INNER JOIN seccion as sec
 ON a.id_seccion = sec.id
 INNER JOIN curso
 ON sec.id_curso = curso.id
-
 WHERE ac.aprobado = 1
 GROUP BY estudiante.carne
 ;
